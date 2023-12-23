@@ -17,4 +17,5 @@ INSERT INTO genres (genre_id) VALUES ('War');
 INSERT INTO genres (genre_id) VALUES ('Musical');
 INSERT INTO genres (genre_id) VALUES ('Western');
 INSERT INTO genres (genre_id) VALUES ('Film-Noir');
+INSERT INTO genres (genre_id) VALUES ('Horror');
 INSERT INTO genres (genre_id) VALUES ('Other');
