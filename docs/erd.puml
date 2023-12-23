@@ -1,0 +1,40 @@
+@startuml
+' hide the spot
+' hide circle
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+entity "Users" as users {
+  *user_id : varchar(255)
+  --
+  *name : varchar(255)
+}
+
+entity "Movies" as movies {
+  *movie_id : varchar(255)
+  --
+  *title : varchar(255)
+}
+
+entity "Genres" as genres {
+  *genre_id : varchar(255)
+}
+
+entity "MovieGenres" as Mgenres {
+  *movie_id : varchar(255) <<FK>>
+   genre_id : varchar(255) <<FK>>
+}
+
+entity "Ratings" as ratings {
+  *user_id : varchar(255) <<FK>>
+   movie_id : varchar(255) <<FK>>
+  --
+  *rating : double
+}
+
+ratings ||..o{ users
+ratings ||..o{ movies   
+movies ||..o{ Mgenres
+Mgenres }o..|| genres
+@enduml
