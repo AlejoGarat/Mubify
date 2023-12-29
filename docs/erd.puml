@@ -19,22 +19,32 @@ entity "Movies" as movies {
 
 entity "Genres" as genres {
   *genre_id : varchar(255)
+  --
 }
 
 entity "MovieGenres" as Mgenres {
   *movie_id : varchar(255) <<FK>>
-   genre_id : varchar(255) <<FK>>
+  *genre_id : varchar(255) <<FK>>
+  --
 }
 
 entity "Ratings" as ratings {
   *user_id : varchar(255) <<FK>>
-   movie_id : varchar(255) <<FK>>
+  *movie_id : varchar(255) <<FK>>
   --
   *rating : double
 }
 
-ratings ||..o{ users
-ratings ||..o{ movies   
-movies ||..o{ Mgenres
-Mgenres }o..|| genres
+entity "MovieViews" as views {
+  *user_id : varchar(255) <<FK>>
+  *movie_id : varchar(255) <<FK>>
+  --
+}
+
+users }|-- ratings
+movies }|-- ratings 
+movies }|-- Mgenres
+Mgenres ||-- genres
+users }o-- views
+movies }o-- views
 @enduml
